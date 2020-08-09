@@ -24,5 +24,5 @@ process.env.EXP_TOKEN = 60 * 60 * 24 * 30;
 // ======================
 //  SEED TOKEN
 // ======================
-process.env.SEED = process.env.SEED_TOKEN || 'jwt-development-test-seed';
+process.env.SEED = process.env.SEED || 'jwt-development-test-seed';
 //256-bit-seed

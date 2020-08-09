@@ -5,7 +5,7 @@ const _ = require('underscore');
 const bcrypt = require('bcrypt');
 const { verificaToken, verificaAdminRole } = require('../middlewares/autenticacion');
 
-app.get('/usuario', verificaToken , (req, res) => {
+app.get('/usuario', (req, res) => {
     let desde = req.query.desde || 0;
     let limit = req.query.limite || 5;
     desde = Number(desde);
@@ -58,7 +58,7 @@ app.post('/usuario/', [verificaToken, verificaAdminRole] ,  (req, res)=> {
   })
   
    
-  app.put('/usuario/:id', verificaToken,  (req, res) => {
+  app.put('/usuario/:id', [verificaToken, verificaAdminRole] ,  (req, res) => {
       let id = req.params.id;
       let body = _.pick(req.body, ['nombre', 'email', 'role', 'estado']); 
       console.log(id)
@@ -75,7 +75,7 @@ app.post('/usuario/', [verificaToken, verificaAdminRole] ,  (req, res)=> {
   })
    
    
-  app.delete('/usuario/:id', verificaToken,  (req, res) => {
+  app.delete('/usuario/:id', [verificaToken, verificaAdminRole] ,  (req, res) => {
      
     let id = req.params.id;
     console.log(id)
