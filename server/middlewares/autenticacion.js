@@ -12,7 +12,10 @@ let verificaToken = (req, res, next) => {
         if(err){
             return res.status(401).json({
                 ok: false,
-                err
+                error:{
+                    name:'JWT',
+                    message:'debe de proporcionar un token'
+                }
             });
         }
 

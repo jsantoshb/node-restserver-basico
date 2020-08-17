@@ -20,9 +20,13 @@ process.env.URLDB = urlDB;
 // 60 monutos
 // 24 horas
 // 30 dias
-process.env.EXP_TOKEN = 60 * 60 * 24 * 30;
+process.env.EXP_TOKEN = '48h'//60 * 60 * 24 * 30;
 // ======================
 //  SEED TOKEN
 // ======================
 process.env.SEED = process.env.SEED || 'jwt-development-test-seed';
-//256-bit-seed
+
+// ======================
+//  GOOGLE CLIENT ID
+// ======================
+process.env.CLIENTID = process.env.CLIENTID || '681342580824-9fim9d5e911lcurm7282kfag0teaj069.apps.googleusercontent.com';
