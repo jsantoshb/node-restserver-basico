@@ -1,6 +1,5 @@
 
 const jwt = require("jsonwebtoken");
-
 /// ====================
 /// VERIFICAR TOKEN
 /// ====================
@@ -47,7 +46,29 @@ let verificaAdminRole = (req, res, next) => {
 
 }
 
+let verificaTokenUrl = (req, res, next) => {
+ let token = req.query.token;
+
+ jwt.verify(token, process.env.SEED, (err, decoded)=>{
+    if(err){
+        return res.status(401).json({
+            ok: false,
+            error:{
+                name:'JWT',
+                message:'token no válido'
+            }
+        });
+    }
+
+    //Asignamos el valor del usuario a la request para que ahora 
+    //todas nuestras peticiones tengan el objeto usuario 
+    req.usuario = decoded.usuario;
+    next();
+});
+
+}
 module.exports = {
     verificaToken,
-    verificaAdminRole
+    verificaAdminRole,
+    verificaTokenUrl
 }
